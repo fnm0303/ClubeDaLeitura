@@ -41,11 +41,30 @@ public class TelaCaixa
         Console.ReadLine();
     }
 
-    public void VisualizarTodos()
+    public void Editar()
     {
         Console.WriteLine("------------------------");
-        Console.WriteLine("Visualização de Caixas");
+        Console.WriteLine("Edição de Caixas");
         Console.WriteLine("------------------------");
+
+        VisualizarTodos(false);
+
+        Console.WriteLine("------------------------");
+        Console.Write("Digite o ID do registro que deseja editar: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        Caixa caixaAtualizada = ObterDadosCadastrais();
+
+        repositorioCaixa.Editar(idSelecionado, caixaAtualizada);
+    }
+    public void VisualizarTodos(bool deveExibirCabecalho)
+    {
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Visualização de Caixas");
+            Console.WriteLine("------------------------");
+        }
 
         Console.WriteLine("{0, -7}, {1, -20}, {2, -10}, {3, -20}",
                             "Id", "Etiqueta", "Cor", "Dias de empréstimo");
@@ -61,6 +80,14 @@ public class TelaCaixa
             Console.WriteLine("{0, -7}, {1, -20}, {2, -10}, {3, -20}",
                             c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo);
         }
+
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+        }
+
     }
 
     private Caixa ObterDadosCadastrais()
@@ -78,4 +105,6 @@ public class TelaCaixa
 
         return novaCaixa;
     }
+
+
 }
