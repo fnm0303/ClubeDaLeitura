@@ -3,8 +3,10 @@
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
+RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
+TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
+
 MenuPrincipal menuPrincipal = new MenuPrincipal();
-TelaCaixa telaCaixa = new TelaCaixa();
 
 while (true)
 {
@@ -22,7 +24,7 @@ while (true)
 
         if (opcaoMenuInterno == "1")
         {
-
+            telaCaixa.Cadastrar();
         }
         else if (opcaoMenuInterno == "2")
         {
