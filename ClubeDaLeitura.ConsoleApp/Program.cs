@@ -1,8 +1,10 @@
 ﻿
 
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 MenuPrincipal menuPrincipal = new MenuPrincipal();
+TelaCaixa telaCaixa = new TelaCaixa();
 
 while (true)
 {
@@ -13,7 +15,27 @@ while (true)
 
     if (opcaoMenuPrincipal == "1") //caixas
     {
+        string? opcaoMenuInterno = telaCaixa.ObterOpcaoMenu();
 
+        if (opcaoMenuPrincipal == "S")
+            break;
+
+        if (opcaoMenuInterno == "1")
+        {
+
+        }
+        else if (opcaoMenuInterno == "2")
+        {
+
+        }
+        else if (opcaoMenuInterno == "3")
+        {
+
+        }
+        else if (opcaoMenuInterno == "4")
+        {
+
+        }
     }
     else if (opcaoMenuPrincipal == "2") //revistas
     {
