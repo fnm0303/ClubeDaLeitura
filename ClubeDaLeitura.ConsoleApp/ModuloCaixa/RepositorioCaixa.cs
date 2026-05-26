@@ -36,7 +36,8 @@ public class RepositorioCaixa
         if (caixaSelecionada == null)
             return false;
 
-
+        caixaSelecionada.Atualizar(caixaAtualizada);
+        return true;
     }
 
     public Caixa[] SelecionarTodos()

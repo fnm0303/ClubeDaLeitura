@@ -56,6 +56,11 @@ public class TelaCaixa
         Caixa caixaAtualizada = ObterDadosCadastrais();
 
         repositorioCaixa.Editar(idSelecionado, caixaAtualizada);
+
+        Console.WriteLine($"O registro \"{caixaAtualizada.Etiqueta}\" foi atualizado com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
     public void VisualizarTodos(bool deveExibirCabecalho)
     {
