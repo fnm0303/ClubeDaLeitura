@@ -36,7 +36,7 @@ while (true)
         }
         else if (opcaoMenuInterno == "4")
         {
-
+            telaCaixa.VisualizarTodos();
         }
     }
     else if (opcaoMenuPrincipal == "2") //revistas

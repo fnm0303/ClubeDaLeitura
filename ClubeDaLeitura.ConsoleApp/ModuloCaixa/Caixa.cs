@@ -1,3 +1,5 @@
+using ClubeDaLeitura.ConsoleApp.Utilidades;
+
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 /*
@@ -13,12 +15,14 @@ Regras de Negócio:
 
 public class Caixa
 {
+    public int Id { get; set; }
     public string Etiqueta { get; private set; }
     public string Cor { get; private set; }
     public int DiasDeEmprestimo { get; private set; }
 
     public Caixa(string etiqueta, string cor, int diasDeEmprestimo) //construtor
     {
+        Id = GeradorDeIds.ObterIdCaixa();
         Etiqueta = etiqueta;
         Cor = cor;
         DiasDeEmprestimo = diasDeEmprestimo;
