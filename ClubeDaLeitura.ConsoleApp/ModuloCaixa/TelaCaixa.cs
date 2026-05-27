@@ -44,7 +44,7 @@ public class TelaCaixa
     public void Editar()
     {
         Console.WriteLine("------------------------");
-        Console.WriteLine("Edição de Caixas");
+        Console.WriteLine("Edição de Caixa");
         Console.WriteLine("------------------------");
 
         VisualizarTodos(false);
@@ -53,11 +53,35 @@ public class TelaCaixa
         Console.Write("Digite o ID do registro que deseja editar: ");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
+        Console.WriteLine("------------------------");
+
         Caixa caixaAtualizada = ObterDadosCadastrais();
 
         repositorioCaixa.Editar(idSelecionado, caixaAtualizada);
 
+        Console.WriteLine("------------------------");
         Console.WriteLine($"O registro \"{caixaAtualizada.Etiqueta}\" foi atualizado com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
+    }
+
+    public void Excluir()
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Exclusão de Caixa");
+        Console.WriteLine("------------------------");
+
+        VisualizarTodos(false);
+
+        Console.WriteLine("------------------------");
+        Console.Write("Digite o ID do registro que deseja excluir: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        repositorioCaixa.Excluir(idSelecionado);
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"O registro de ID \"{idSelecionado}\" foi excluído com sucesso.");
         Console.WriteLine("------------------------");
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
@@ -110,6 +134,5 @@ public class TelaCaixa
 
         return novaCaixa;
     }
-
 
 }

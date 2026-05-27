@@ -23,21 +23,17 @@ while (true)
             break;
 
         if (opcaoMenuInterno == "1")
-        {
             telaCaixa.Cadastrar();
-        }
-        else if (opcaoMenuInterno == "2")
-        {
-            telaCaixa.Editar();
-        }
-        else if (opcaoMenuInterno == "3")
-        {
 
-        }
+        else if (opcaoMenuInterno == "2")
+            telaCaixa.Editar();
+
+        else if (opcaoMenuInterno == "3")
+            telaCaixa.Excluir();
+
         else if (opcaoMenuInterno == "4")
-        {
             telaCaixa.VisualizarTodos(true);
-        }
+
     }
     else if (opcaoMenuPrincipal == "2") //revistas
     {
