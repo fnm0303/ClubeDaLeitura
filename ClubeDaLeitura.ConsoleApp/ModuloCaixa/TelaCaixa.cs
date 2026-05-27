@@ -95,7 +95,7 @@ public class TelaCaixa
             Console.WriteLine("------------------------");
         }
 
-        Console.WriteLine("{0, -7}, {1, -20}, {2, -10}, {3, -20}",
+        Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             "Id", "Etiqueta", "Cor", "Dias de empréstimo");
 
         Caixa[] registros = repositorioCaixa.SelecionarTodos();
@@ -106,7 +106,7 @@ public class TelaCaixa
             if (c == null)
                 continue;
 
-            Console.WriteLine("{0, -7}, {1, -20}, {2, -10}, {3, -20}",
+            Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo);
         }
 
