@@ -1,7 +1,18 @@
+using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 public class TelaRevista
 {
+    private readonly RepositorioRevista repositorioRevista;
+    private readonly RepositorioCaixa repositorioCaixa;
+
+    public TelaRevista(RepositorioRevista repositorioRevista, RepositorioCaixa repositorioCaixa)
+    {
+        this.repositorioRevista = repositorioRevista;
+        this.repositorioCaixa = repositorioCaixa;
+    }
+
     public string? ObterOpcaoMenu()
     {
         Console.WriteLine("------------------------");
@@ -39,5 +50,20 @@ public class TelaRevista
         int idCaixa = Convert.ToInt32(Console.ReadLine());
 
         //Revista novaRevista = new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+    }
+
+    public void Editar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Excluir()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void VisualizarTodos()
+    {
+        throw new NotImplementedException();
     }
 }

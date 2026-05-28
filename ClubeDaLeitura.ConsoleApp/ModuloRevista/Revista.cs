@@ -1,4 +1,5 @@
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.Utilidades;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
@@ -12,16 +13,23 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 */
 public class Revista
 {
+    public int Id { get; private set; }
     public string Titulo { get; private set; }
     public int NumeroEdicao { get; private set; }
     public DateTime AnoPublicacao { get; private set; }
-    public Caixa caixa;
+    public Caixa Caixa { get; private set; }
 
     public Revista(string titulo, int numeroEdicao, DateTime anoPublicacao, Caixa caixa)
     {
+        Id = GeradorDeIds.ObterIdRevista();
         Titulo = titulo;
         NumeroEdicao = numeroEdicao;
         AnoPublicacao = anoPublicacao;
-        this.caixa = caixa;
+        Caixa = caixa;
+    }
+
+    public void Atualizar(Revista revistaAtualizada)
+    {
+
     }
 }

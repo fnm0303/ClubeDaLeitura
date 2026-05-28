@@ -104,7 +104,7 @@ public class TelaCaixa
         {
             Caixa c = registros[i];
             if (c == null)
-                break;
+                continue;
 
             Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo);
