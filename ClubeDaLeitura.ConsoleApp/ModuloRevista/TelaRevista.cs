@@ -36,6 +36,18 @@ public class TelaRevista
         Console.WriteLine("Cadastro de Revistas");
         Console.WriteLine("------------------------");
 
+        Revista novaRevista = ObterDadosCadastrais();
+
+        repositorioRevista.Cadastrar(novaRevista);
+
+        Console.WriteLine($"O registro \"{novaRevista.Titulo}\" foi cadastrado com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
+    }
+
+    private Revista ObterDadosCadastrais()
+    {
         Console.Write("Informe o título da revista: ");
         string? titulo = Console.ReadLine();
 
@@ -43,13 +55,31 @@ public class TelaRevista
         int numeroEdicao = Convert.ToInt32(Console.ReadLine());
 
         Console.Write("Informe o ano de publicação da revista: ");
-        DateTime anoPublicacao = Convert.ToDateTime(Console.ReadLine());
+        int anoPublicacao = Convert.ToInt32(Console.ReadLine());
 
-        //ESPERAR AULA PARA VER COMO SELECIONAR A CAIXA DESEJADA      
-        Console.Write("Informe o ID da Caixa onde deseja guardar a revista: ");
-        int idCaixa = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("--------------------------------");
 
-        //Revista novaRevista = new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+        Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
+                            "Id", "Etiqueta", "Cor", "Dias de empréstimo");
+
+        Caixa[] registros = repositorioCaixa.SelecionarTodos();
+
+        for (int i = 0; i < registros.Length; i++)
+        {
+            Caixa c = registros[i];
+            if (c == null)
+                continue;
+
+            Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
+                            c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo);
+        }
+
+        Console.WriteLine("--------------------------------");
+
+        Console.Write("Digite o ID da caixa onde deseja incluir a revista: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+
     }
 
     public void Editar()

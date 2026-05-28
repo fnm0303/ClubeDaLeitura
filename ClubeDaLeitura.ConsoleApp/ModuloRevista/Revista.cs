@@ -16,10 +16,10 @@ public class Revista
     public int Id { get; private set; }
     public string Titulo { get; private set; }
     public int NumeroEdicao { get; private set; }
-    public DateTime AnoPublicacao { get; private set; }
+    public int AnoPublicacao { get; private set; }
     public Caixa Caixa { get; private set; }
 
-    public Revista(string titulo, int numeroEdicao, DateTime anoPublicacao, Caixa caixa)
+    public Revista(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
     {
         Id = GeradorDeIds.ObterIdRevista();
         Titulo = titulo;
@@ -30,6 +30,9 @@ public class Revista
 
     public void Atualizar(Revista revistaAtualizada)
     {
-
+        Titulo = revistaAtualizada.Titulo;
+        NumeroEdicao = revistaAtualizada.NumeroEdicao;
+        AnoPublicacao = revistaAtualizada.AnoPublicacao;
+        Caixa = revistaAtualizada.Caixa;
     }
 }

@@ -63,4 +63,12 @@ public class RepositorioCaixa
         return registros;
     }
 
+    public Caixa? SelecionarPorId(int idSelecionado)
+    {
+        for (int i = 0; i < registros.Length; i++)
+        {
+
+        }
+    }
+
 }
