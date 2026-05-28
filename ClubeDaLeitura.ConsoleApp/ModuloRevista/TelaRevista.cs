@@ -18,4 +18,26 @@ public class TelaRevista
 
         return opcaoMenuInterno;
     }
+
+    public void Cadastrar()
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Cadastro de Revistas");
+        Console.WriteLine("------------------------");
+
+        Console.Write("Informe o título da revista: ");
+        string? titulo = Console.ReadLine();
+
+        Console.Write("Informe o número de edição da revista: ");
+        int numeroEdicao = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Informe o ano de publicação da revista: ");
+        DateTime anoPublicacao = Convert.ToDateTime(Console.ReadLine());
+
+        //ESPERAR AULA PARA VER COMO SELECIONAR A CAIXA DESEJADA      
+        Console.Write("Informe o ID da Caixa onde deseja guardar a revista: ");
+        int idCaixa = Convert.ToInt32(Console.ReadLine());
+
+        //Revista novaRevista = new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+    }
 }

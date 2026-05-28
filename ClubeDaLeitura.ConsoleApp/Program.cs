@@ -47,7 +47,8 @@ while (true)
             if (opcaoMenuInterno == "S")
                 break;
 
-            if (opcaoMenuInterno == "1") { }
+            if (opcaoMenuInterno == "1")
+                telaRevista.Cadastrar();
 
             else if (opcaoMenuInterno == "2") { }
 
