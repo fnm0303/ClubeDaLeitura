@@ -20,4 +20,29 @@ public class RepositorioRevista
     {
         return registros;
     }
+
+    public bool Editar(int idSelecionado, Revista revistaAtualizada)
+    {
+        Revista? revistaSelecionada = null;
+
+        for (int i = 0; i < registros.Length; i++)
+        {
+            Revista r = registros[i];
+
+            if (r == null)
+                continue;
+
+            if (r.Id == idSelecionado)
+            {
+                revistaSelecionada = r;
+                break;
+            }
+        }
+        if (revistaSelecionada == null)
+            return false;
+
+        revistaSelecionada.Atualizar(revistaAtualizada);
+
+        return true;
+    }
 }
