@@ -73,40 +73,55 @@ public class TelaRevista
 
     public void Excluir()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Exclusão de Revista");
+        Console.WriteLine("---------------------------------");
+
+        VisualizarTodos(false);
+
+        Console.Write("Digite o ID do registro que deseja excluir: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        repositorioRevista.Excluir(idSelecionado);
+
+        Console.WriteLine($"O registro de ID \"{idSelecionado}\" foi excluído com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
 
     public void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("------------------------");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Visualização de Revistas");
-            Console.WriteLine("------------------------");
+            Console.WriteLine("---------------------------------");
+        }
 
-            Console.WriteLine("{0, -7} | {1, -25} | {2, -6} | {3, -4} | {4, -15}",
-                            "Id", "Título", "Edição", "Ano", "Caixa");
+        Console.WriteLine(
+            "{0, -7} | {1, -25} | {2, -6} | {3, -4} | {4, -15}",
+            "Id", "Título", "Edição", "Ano", "Caixa"
+        );
 
-            Revista?[] revistas = repositorioRevista.SelecionarTodos();
+        Revista[] revistas = repositorioRevista.SelecionarTodos();
 
-            for (int i = 0; i < revistas.Length; i++)
-            {
-                Revista r = revistas[i];
+        for (int i = 0; i < revistas.Length; i++)
+        {
+            Revista r = revistas[i];
 
-                Console.WriteLine("{0, -7} | {1, -25} | {2, -6} | {3, -4} | {4, -15}",
-                            "Id", "Título", "Edição", "Ano", "Caixa");
+            if (r == null)
+                continue;
 
-                if (r == null)
-                    continue;
-
-                Console.WriteLine("{0, -7} | {1, -25} | {2, -6} | {3, -4} | {4, -15}",
-                                r.Id, r.Titulo, r.NumeroEdicao, r.AnoPublicacao, r.Caixa.Etiqueta);
-            }
+            Console.WriteLine(
+                "{0, -7} | {1, -25} | {2, -6} | {3, -4} | {4, -15}",
+                r.Id, r.Titulo, r.NumeroEdicao, r.AnoPublicacao, r.Caixa.Etiqueta
+            );
         }
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("------------------------");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Digite ENTER para continuar");
             Console.ReadLine();
         }

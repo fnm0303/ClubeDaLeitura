@@ -10,6 +10,9 @@ RepositorioRevista repositorioRevista = new RepositorioRevista();
 Caixa caixaTeste = new Caixa("Gibis", "Azul", 3);
 Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
 
+repositorioCaixa.Cadastrar(caixaTeste);
+repositorioRevista.Cadastrar(revistaTeste);
+
 TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
 TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
 MenuPrincipal menuPrincipal = new MenuPrincipal();
