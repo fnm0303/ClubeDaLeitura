@@ -46,6 +46,21 @@ public class TelaRevista
         Console.ReadLine();
     }
 
+    public void Editar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Excluir()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void VisualizarTodos()
+    {
+        throw new NotImplementedException();
+    }
+
     private Revista ObterDadosCadastrais()
     {
         Console.Write("Informe o título da revista: ");
@@ -79,21 +94,8 @@ public class TelaRevista
         Console.Write("Digite o ID da caixa onde deseja incluir a revista: ");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
+        Caixa? caixaSelecionada = repositorioCaixa.SelecionarPorId(idSelecionado);
 
-    }
-
-    public void Editar()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Excluir()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void VisualizarTodos()
-    {
-        throw new NotImplementedException();
+        return new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
     }
 }

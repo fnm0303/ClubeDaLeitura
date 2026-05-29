@@ -67,8 +67,16 @@ public class RepositorioCaixa
     {
         for (int i = 0; i < registros.Length; i++)
         {
+            Caixa c = registros[i];
+
+            if (c == null)
+                continue;
+
+            if (c.Id == idSelecionado)
+                return c;
 
         }
+        return null;
     }
 
 }
