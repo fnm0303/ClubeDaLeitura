@@ -33,6 +33,27 @@ public class TelaCaixa
 
         Caixa novaCaixa = ObterDadosCadastrais();
 
+        Caixa[] caixas = repositorioCaixa.SelecionarTodos();
+
+        for (int i = 0; i < caixas.Length; i++)
+        {
+            Caixa c = caixas[i];
+
+            if (c == null)
+                continue;
+
+            if (c.Etiqueta.ToLower() == novaCaixa.Etiqueta.ToLower()) //ToLower = deixando todas as etiquetas minusculas
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine($"Já existe uma caixa com a etiqueta \"{novaCaixa.Etiqueta}\"!");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Digite ENTER para continuar.");
+                Console.ReadLine();
+
+                return;
+            }
+        }
+
         repositorioCaixa.Cadastrar(novaCaixa);
 
         Console.WriteLine($"O registro \"{novaCaixa.Etiqueta}\" foi cadastrado com sucesso.");
@@ -56,6 +77,27 @@ public class TelaCaixa
         Console.WriteLine("------------------------");
 
         Caixa caixaAtualizada = ObterDadosCadastrais();
+
+        Caixa[] caixas = repositorioCaixa.SelecionarTodos();
+
+        for (int i = 0; i < caixas.Length; i++)
+        {
+            Caixa c = caixas[i];
+
+            if (c == null)
+                continue;
+
+            if (c.Id != idSelecionado && c.Etiqueta.ToLower() == caixaAtualizada.Etiqueta.ToLower()) //ToLower = deixando todas as etiquetas minusculas
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine($"Já existe uma caixa com a etiqueta \"{caixaAtualizada.Etiqueta}\"!");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Digite ENTER para continuar.");
+                Console.ReadLine();
+
+                return;
+            }
+        }
 
         repositorioCaixa.Editar(idSelecionado, caixaAtualizada);
 
