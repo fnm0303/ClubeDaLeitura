@@ -13,7 +13,7 @@ Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
 repositorioCaixa.Cadastrar(caixaTeste);
 repositorioRevista.Cadastrar(revistaTeste);
 
-TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
+TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
 MenuPrincipal menuPrincipal = new MenuPrincipal();
 
