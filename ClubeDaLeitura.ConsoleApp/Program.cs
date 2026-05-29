@@ -7,6 +7,9 @@ using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
 RepositorioRevista repositorioRevista = new RepositorioRevista();
 
+Caixa caixaTeste = new Caixa("Gibis", "Azul", 3);
+Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
+
 TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
 TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
 MenuPrincipal menuPrincipal = new MenuPrincipal();
@@ -58,7 +61,7 @@ while (true)
                 telaRevista.Excluir();
 
             else if (opcaoMenuInterno == "4")
-                telaRevista.VisualizarTodos();
+                telaRevista.VisualizarTodos(true);
         }
         else if (opcaoMenuPrincipal == "3") //amigos
         {
