@@ -3,6 +3,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 public class TelaAmigos
 {
     private readonly RepositorioAmigos repositorioAmigos;
+
+    public TelaAmigos(RepositorioAmigos repositorioAmigos)
+    {
+        this.repositorioAmigos = repositorioAmigos;
+    }
     public string? ObterOpcaoMenu()
     {
         Console.WriteLine("------------------------");
@@ -28,8 +33,6 @@ public class TelaAmigos
 
         Amigos novoAmigo = ObterDadosCadastrais();
 
-        Amigos[] amigos = repositorioAmigos.SelecionarTodos();
-
         repositorioAmigos.Cadastrar(novoAmigo);
 
         Console.WriteLine($"O registro \"{novoAmigo.Nome}\" foi cadastrado com sucesso.");
@@ -47,9 +50,36 @@ public class TelaAmigos
     {
 
     }
-    public void VisualizarTodos()
+    public void VisualizarTodos(bool deveExibirCabecalho)
     {
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Visualização de Amigos");
+            Console.WriteLine("------------------------");
 
+            Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
+                            "Id", "Nome", "Nome do Responsável", "Telefone");
+
+            Amigos[] registros = repositorioAmigos.SelecionarTodos();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Amigos a = registros[i];
+                if (a == null)
+                    continue;
+
+                Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
+                                a.Id, a.Nome, a.NomeResponsavel, a.Telefone);
+            }
+
+            if (deveExibirCabecalho)
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Digite ENTER para continuar...");
+                Console.ReadLine();
+            }
+        }
     }
 
     private Amigos ObterDadosCadastrais()
