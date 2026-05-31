@@ -1,6 +1,7 @@
 ﻿
 
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
@@ -15,6 +16,7 @@ repositorioRevista.Cadastrar(revistaTeste);
 
 TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
+TelaAmigos telaAmigos = new TelaAmigos();
 MenuPrincipal menuPrincipal = new MenuPrincipal();
 
 while (true)
@@ -66,9 +68,24 @@ while (true)
             else if (opcaoMenuInterno == "4")
                 telaRevista.VisualizarTodos(true);
         }
+
         else if (opcaoMenuPrincipal == "3") //amigos
         {
+            string? opcaoMenuInterno = telaAmigos.ObterOpcaoMenu();
+            if (opcaoMenuInterno == "S")
+                break;
 
+            if (opcaoMenuInterno == "1")
+                telaAmigos.Cadastrar();
+
+            else if (opcaoMenuInterno == "2")
+                telaAmigos.Editar();
+
+            else if (opcaoMenuInterno == "3")
+                telaAmigos.Excluir();
+
+            else if (opcaoMenuInterno == "4")
+                telaAmigos.VisualizarTodos();
         }
         else if (opcaoMenuPrincipal == "4") //empréstimos
         {

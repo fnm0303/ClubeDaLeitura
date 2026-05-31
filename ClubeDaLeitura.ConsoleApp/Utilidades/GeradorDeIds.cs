@@ -6,6 +6,8 @@ public static class GeradorDeIds
 
     private static int contadorIdsRevista = 1;
 
+    private static int contadorIdsAmigos = 1;
+
     public static int ObterIdCaixa()
     {
         return contadorIdsCaixa++;
@@ -14,5 +16,10 @@ public static class GeradorDeIds
     public static int ObterIdRevista()
     {
         return contadorIdsRevista++;
+    }
+
+    public static int ObterIdAmigo()
+    {
+        return contadorIdsAmigos++;
     }
 }
