@@ -88,6 +88,7 @@ while (true)
             else if (opcaoMenuInterno == "4")
                 telaAmigos.VisualizarTodos(true);
         }
+
         else if (opcaoMenuPrincipal == "4") //empréstimos
         {
 
