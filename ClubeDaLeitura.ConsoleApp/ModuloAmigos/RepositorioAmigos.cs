@@ -16,6 +16,30 @@ public class RepositorioAmigos
         }
     }
 
+    public bool Editar(int idSelecionado, Amigos amigoAtualizado)
+    {
+        Amigos? amigoSelecionado = null;
+        for (int i = 0; i < registros.Length; i++)
+        {
+            Amigos a = registros[i];
+
+            if (a == null)
+                continue;
+
+            if (a.Id == idSelecionado)
+            {
+                amigoSelecionado = a;
+                break;
+            }
+        }
+
+        if (amigoSelecionado == null)
+            return false;
+
+        amigoSelecionado.Atualizar(amigoAtualizado);
+        return true;
+    }
+
     public bool Excluir(int idSelecionado)
     {
         for (int i = 0; i < registros.Length; i++)
@@ -38,4 +62,5 @@ public class RepositorioAmigos
     {
         return registros;
     }
+
 }

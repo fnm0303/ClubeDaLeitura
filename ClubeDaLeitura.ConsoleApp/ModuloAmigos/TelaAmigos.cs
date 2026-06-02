@@ -43,7 +43,27 @@ public class TelaAmigos
 
     public void Editar()
     {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Edição de Amigo");
+        Console.WriteLine("------------------------");
 
+        VisualizarTodos(false);
+
+        Console.WriteLine("------------------------");
+        Console.Write("Digite o ID do registro que deseja editar: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("------------------------");
+
+        Amigos amigoAtualizado = ObterDadosCadastrais();
+
+        repositorioAmigos.Editar(idSelecionado, amigoAtualizado);
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"O registro \"{amigoAtualizado.Nome}\" foi atualizado com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
 
     public void Excluir()
@@ -73,41 +93,41 @@ public class TelaAmigos
             Console.WriteLine("------------------------");
             Console.WriteLine("Visualização de Amigos");
             Console.WriteLine("------------------------");
+        }
+
+        Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
+                        "Id", "Nome", "Nome do Responsável", "Telefone");
+
+        Amigos[] registros = repositorioAmigos.SelecionarTodos();
+
+        for (int i = 0; i < registros.Length; i++)
+        {
+            Amigos a = registros[i];
+            if (a == null)
+                continue;
 
             Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
-                            "Id", "Nome", "Nome do Responsável", "Telefone");
+                            a.Id, a.Nome, a.NomeResponsavel, a.Telefone);
+        }
 
-            Amigos[] registros = repositorioAmigos.SelecionarTodos();
-
-            for (int i = 0; i < registros.Length; i++)
-            {
-                Amigos a = registros[i];
-                if (a == null)
-                    continue;
-
-                Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
-                                a.Id, a.Nome, a.NomeResponsavel, a.Telefone);
-            }
-
-            if (deveExibirCabecalho)
-            {
-                Console.WriteLine("------------------------");
-                Console.WriteLine("Digite ENTER para continuar...");
-                Console.ReadLine();
-            }
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
         }
     }
 
     private Amigos ObterDadosCadastrais()
     {
         Console.Write("Informe o nome do amigo: ");
-        string nome = Console.ReadLine();
+        string? nome = Console.ReadLine();
 
         Console.Write("Informe o nome do responsável: ");
-        string nomeResponsavel = Console.ReadLine();
+        string? nomeResponsavel = Console.ReadLine();
 
         Console.Write("Informe o telefone do amigo (somente números): ");
-        int telefone = Convert.ToInt32(Console.ReadLine());
+        long telefone = Convert.ToInt64(Console.ReadLine());
 
         Amigos novoAmigo = new Amigos(nome, nomeResponsavel, telefone);
 

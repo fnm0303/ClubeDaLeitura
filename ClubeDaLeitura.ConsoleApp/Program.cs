@@ -11,9 +11,11 @@ RepositorioAmigos repositorioAmigos = new RepositorioAmigos();
 
 Caixa caixaTeste = new Caixa("Gibis", "Azul", 3);
 Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
+Amigos amigoTeste = new Amigos("Marília", "Cremilda", 4799141593);
 
 repositorioCaixa.Cadastrar(caixaTeste);
 repositorioRevista.Cadastrar(revistaTeste);
+repositorioAmigos.Cadastrar(amigoTeste);
 
 TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
