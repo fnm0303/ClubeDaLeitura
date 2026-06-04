@@ -1,3 +1,4 @@
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
@@ -143,7 +144,7 @@ public class TelaRevista
         Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             "Id", "Etiqueta", "Cor", "Dias de empréstimo");
 
-        object[] registros = repositorioCaixa.SelecionarTodos();
+        EntidadeBase[] registros = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < registros.Length; i++)
         {
@@ -160,7 +161,7 @@ public class TelaRevista
         Console.Write("Digite o ID da caixa que deseja selecionar: ");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-        Caixa? caixaSelecionada = repositorioCaixa.SelecionarPorId(idSelecionado);
+        Caixa? caixaSelecionada = (Caixa?)repositorioCaixa.SelecionarPorId(idSelecionado);
 
         return new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
     }

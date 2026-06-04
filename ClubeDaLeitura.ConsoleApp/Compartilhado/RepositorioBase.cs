@@ -4,9 +4,9 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 public abstract class RepositorioBase
 {
-    private object[] registros = new object[100];
+    private EntidadeBase[] registros = new EntidadeBase[100];
 
-    public void Cadastrar(object novoRegistro)
+    public void Cadastrar(EntidadeBase novoRegistro)
     {
         for (int i = 0; i < registros.Length; i++)
         {
@@ -18,7 +18,22 @@ public abstract class RepositorioBase
         }
     }
 
-    public object[] SelecionarTodos()
+    public EntidadeBase? SelecionarPorId(int idSelecionado)
+    {
+        for (int i = 0; i < registros.Length; i++)
+        {
+            EntidadeBase o = registros[i];
+
+            if (o == null)
+                continue;
+
+            if (o.Id == idSelecionado)
+                return o;
+
+        }
+        return null;
+    }
+    public EntidadeBase[] SelecionarTodos()
     {
         return registros;
     }

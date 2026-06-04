@@ -1,3 +1,4 @@
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.Utilidades;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
@@ -13,9 +14,8 @@ Regras de Negócio:
 ● Cada caixa define o prazo máximo para empréstimo de suas revistas
 */
 
-public class Caixa
+public class Caixa : EntidadeBase
 {
-    public int Id { get; set; }
     public string Etiqueta { get; private set; }
     public string Cor { get; private set; }
     public int DiasDeEmprestimo { get; private set; }
