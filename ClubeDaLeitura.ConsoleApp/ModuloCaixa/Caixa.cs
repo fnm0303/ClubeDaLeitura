@@ -20,6 +20,7 @@ public class Caixa : EntidadeBase
     public string Cor { get; private set; }
     public int DiasDeEmprestimo { get; private set; }
 
+    //construtor de Classe    
     public Caixa(string etiqueta, string cor, int diasDeEmprestimo) //construtor
     {
         Id = GeradorDeIds.ObterIdCaixa();
@@ -28,8 +29,11 @@ public class Caixa : EntidadeBase
         DiasDeEmprestimo = diasDeEmprestimo;
     }
 
-    public void Atualizar(Caixa caixaAtualizada)
+    //sobrescrita / substituição
+    public override void Atualizar(EntidadeBase entidadeAtualizada)
     {
+        Caixa caixaAtualizada = (Caixa)entidadeAtualizada;
+
         Etiqueta = caixaAtualizada.Etiqueta;
         Cor = caixaAtualizada.Cor;
         DiasDeEmprestimo = caixaAtualizada.DiasDeEmprestimo;

@@ -18,6 +18,18 @@ public abstract class RepositorioBase
         }
     }
 
+    public bool Editar(int idSelecionado, EntidadeBase entidadeAtualizada)
+    {
+        EntidadeBase? entidadeSelecionada = SelecionarPorId(idSelecionado);
+
+        if (entidadeSelecionada == null)
+            return false;
+
+        entidadeSelecionada.Atualizar(entidadeAtualizada);
+
+        return true;
+    }
+
     public bool Excluir(int idSelecionado)
     {
         for (int i = 0; i < registros.Length; i++)
