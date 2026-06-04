@@ -37,11 +37,11 @@ public class TelaCaixa
 
         Caixa novaCaixa = ObterDadosCadastrais();
 
-        Caixa[] caixas = repositorioCaixa.SelecionarTodos();
+        object[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa c = caixas[i];
+            Caixa c = (Caixa)caixas[i];
 
             if (c == null)
                 continue;
@@ -82,11 +82,11 @@ public class TelaCaixa
 
         Caixa caixaAtualizada = ObterDadosCadastrais();
 
-        Caixa[] caixas = repositorioCaixa.SelecionarTodos();
+        object[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa c = caixas[i];
+            Caixa c = (Caixa)caixas[i];
 
             if (c == null)
                 continue;
@@ -164,11 +164,11 @@ public class TelaCaixa
         Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             "Id", "Etiqueta", "Cor", "Dias de empréstimo");
 
-        Caixa[] registros = repositorioCaixa.SelecionarTodos();
+        object[] registros = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < registros.Length; i++)
         {
-            Caixa c = registros[i];
+            Caixa c = (Caixa)registros[i];
             if (c == null)
                 continue;
 

@@ -143,11 +143,11 @@ public class TelaRevista
         Console.WriteLine("{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                             "Id", "Etiqueta", "Cor", "Dias de empréstimo");
 
-        Caixa[] registros = repositorioCaixa.SelecionarTodos();
+        object[] registros = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < registros.Length; i++)
         {
-            Caixa c = registros[i];
+            Caixa c = (Caixa)registros[i];
             if (c == null)
                 continue;
 

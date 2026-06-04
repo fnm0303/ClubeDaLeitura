@@ -1,20 +1,11 @@
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
+
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
-public class RepositorioCaixa
+public class RepositorioCaixa : RepositorioBase
 {
     private Caixa[] registros = new Caixa[100];
 
-    public void Cadastrar(Caixa novaCaixa)
-    {
-        for (int i = 0; i < registros.Length; i++)
-        {
-            if (registros[i] == null)
-            {
-                registros[i] = novaCaixa;
-                break;
-            }
-        }
-    }
     public bool Editar(int idSelecionado, Caixa caixaAtualizada)
     {
         Caixa? caixaSelecionada = null;
@@ -56,11 +47,6 @@ public class RepositorioCaixa
             }
         }
         return false;
-    }
-
-    public Caixa[] SelecionarTodos()
-    {
-        return registros;
     }
 
     public Caixa? SelecionarPorId(int idSelecionado)
