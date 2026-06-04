@@ -18,6 +18,24 @@ public abstract class RepositorioBase
         }
     }
 
+    public bool Excluir(int idSelecionado)
+    {
+        for (int i = 0; i < registros.Length; i++)
+        {
+            EntidadeBase o = registros[i];
+
+            if (o == null)
+                continue;
+
+            if (o.Id == idSelecionado)
+            {
+                registros[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
     public EntidadeBase? SelecionarPorId(int idSelecionado)
     {
         for (int i = 0; i < registros.Length; i++)

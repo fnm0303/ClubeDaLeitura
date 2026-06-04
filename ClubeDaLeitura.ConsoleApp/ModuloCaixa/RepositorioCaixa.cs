@@ -31,22 +31,6 @@ public class RepositorioCaixa : RepositorioBase
         return true;
     }
 
-    public bool Excluir(int idSelecionado)
-    {
-        for (int i = 0; i < registros.Length; i++)
-        {
-            Caixa c = registros[i];
 
-            if (c == null)
-                continue;
-
-            if (c.Id == idSelecionado)
-            {
-                registros[i] = null;
-                return true;
-            }
-        }
-        return false;
-    }
 
 }
