@@ -1,3 +1,5 @@
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
+
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 
 public class TelaAmigos
@@ -98,11 +100,11 @@ public class TelaAmigos
         Console.WriteLine("{0, -7} | {1, -20} | {2, -20} | {3, -10}",
                         "Id", "Nome", "Nome do Responsável", "Telefone");
 
-        Amigos[] registros = repositorioAmigos.SelecionarTodos();
+        EntidadeBase[] amigos = repositorioAmigos.SelecionarTodos();
 
-        for (int i = 0; i < registros.Length; i++)
+        for (int i = 0; i < amigos.Length; i++)
         {
-            Amigos a = registros[i];
+            Amigos a = (Amigos)amigos[i];
             if (a == null)
                 continue;
 
