@@ -17,9 +17,9 @@ repositorioCaixa.Cadastrar(caixaTeste);
 repositorioRevista.Cadastrar(revistaTeste);
 repositorioAmigos.Cadastrar(amigoTeste);
 
-TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa, repositorioRevista);
-TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
-TelaAmigos telaAmigos = new TelaAmigos(repositorioAmigos);
+TelaCaixa telaCaixa = new TelaCaixa("Caixa", repositorioCaixa, repositorioRevista);
+TelaRevista telaRevista = new TelaRevista("Revista", repositorioRevista, repositorioCaixa);
+TelaAmigos telaAmigos = new TelaAmigos("Amigo", repositorioAmigos);
 MenuPrincipal menuPrincipal = new MenuPrincipal();
 
 while (true)

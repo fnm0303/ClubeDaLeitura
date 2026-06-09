@@ -2,45 +2,13 @@ using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 
-public class TelaAmigos
+public class TelaAmigos : TelaBase
 {
     private readonly RepositorioAmigos repositorioAmigos;
 
-    public TelaAmigos(RepositorioAmigos repositorioAmigos)
+    public TelaAmigos(string nomeEntidade, RepositorioAmigos repositorioAmigos) : base(nomeEntidade, repositorioAmigos)
     {
         this.repositorioAmigos = repositorioAmigos;
-    }
-    public string? ObterOpcaoMenu()
-    {
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Gestão de Amigos");
-        Console.WriteLine("------------------------");
-        Console.WriteLine("1 - Cadastrar amigo");
-        Console.WriteLine("2 - Editar amigo");
-        Console.WriteLine("3 - Excluir amigo");
-        Console.WriteLine("4 - Visualizar amigo");
-        Console.WriteLine("S - Sair");
-        Console.WriteLine("------------------------");
-        Console.Write("> ");
-        string? opcaoMenuInterno = Console.ReadLine()?.ToUpper();
-
-        return opcaoMenuInterno;
-    }
-
-    public void Cadastrar()
-    {
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Cadastro de Amigos");
-        Console.WriteLine("------------------------");
-
-        Amigos novoAmigo = ObterDadosCadastrais();
-
-        repositorioAmigos.Cadastrar(novoAmigo);
-
-        Console.WriteLine($"O registro \"{novoAmigo.Nome}\" foi cadastrado com sucesso.");
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Digite ENTER para continuar...");
-        Console.ReadLine();
     }
 
     public void Editar()
@@ -120,7 +88,7 @@ public class TelaAmigos
         }
     }
 
-    private Amigos ObterDadosCadastrais()
+    protected override Amigos ObterDadosCadastrais()
     {
         Console.Write("Informe o nome do amigo: ");
         string? nome = Console.ReadLine();
