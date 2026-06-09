@@ -11,31 +11,6 @@ public class TelaAmigos : TelaBase
         this.repositorioAmigos = repositorioAmigos;
     }
 
-    public void Editar()
-    {
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Edição de Amigo");
-        Console.WriteLine("------------------------");
-
-        VisualizarTodos(false);
-
-        Console.WriteLine("------------------------");
-        Console.Write("Digite o ID do registro que deseja editar: ");
-        int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("------------------------");
-
-        Amigos amigoAtualizado = ObterDadosCadastrais();
-
-        repositorioAmigos.Editar(idSelecionado, amigoAtualizado);
-
-        Console.WriteLine("------------------------");
-        Console.WriteLine($"O registro \"{amigoAtualizado.Nome}\" foi atualizado com sucesso.");
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Digite ENTER para continuar...");
-        Console.ReadLine();
-    }
-
     public void Excluir()
     {
         Console.WriteLine("------------------------");
@@ -56,7 +31,7 @@ public class TelaAmigos : TelaBase
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
     }
-    public void VisualizarTodos(bool deveExibirCabecalho)
+    public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
         {

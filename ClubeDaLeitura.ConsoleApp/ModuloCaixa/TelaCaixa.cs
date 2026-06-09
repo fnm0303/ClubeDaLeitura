@@ -14,52 +14,6 @@ public class TelaCaixa : TelaBase
         this.repositorioRevista = repositorioRevista;
     }
 
-    public void Editar()
-    {
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Edição de Caixa");
-        Console.WriteLine("------------------------");
-
-        VisualizarTodos(false);
-
-        Console.WriteLine("------------------------");
-        Console.Write("Digite o ID do registro que deseja editar: ");
-        int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("------------------------");
-
-        Caixa caixaAtualizada = (Caixa)ObterDadosCadastrais();
-
-        EntidadeBase[] caixas = repositorioCaixa.SelecionarTodos();
-
-        for (int i = 0; i < caixas.Length; i++)
-        {
-            Caixa c = (Caixa)caixas[i];
-
-            if (c == null)
-                continue;
-
-            if (c.Id != idSelecionado && c.Etiqueta.ToLower() == caixaAtualizada.Etiqueta.ToLower()) //ToLower = deixando todas as etiquetas minusculas
-            {
-                Console.WriteLine("------------------------");
-                Console.WriteLine($"Já existe uma caixa com a etiqueta \"{caixaAtualizada.Etiqueta}\"!");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("Digite ENTER para continuar.");
-                Console.ReadLine();
-
-                return;
-            }
-        }
-
-        repositorioCaixa.Editar(idSelecionado, caixaAtualizada);
-
-        Console.WriteLine("------------------------");
-        Console.WriteLine($"O registro \"{caixaAtualizada.Etiqueta}\" foi atualizado com sucesso.");
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Digite ENTER para continuar...");
-        Console.ReadLine();
-    }
-
     public void Excluir()
     {
         Console.WriteLine("------------------------");
@@ -100,7 +54,7 @@ public class TelaCaixa : TelaBase
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
     }
-    public void VisualizarTodos(bool deveExibirCabecalho)
+    public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
         {
