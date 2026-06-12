@@ -2,19 +2,23 @@
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
 RepositorioRevista repositorioRevista = new RepositorioRevista();
 RepositorioAmigos repositorioAmigos = new RepositorioAmigos();
+RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
 
 Caixa caixaTeste = new Caixa("Gibis", "Azul", 3);
 Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
 Amigos amigoTeste = new Amigos("Marília", "Cremilda", 4799141593);
+Emprestimo emprestimoTeste = new Emprestimo(amigoTeste, revistaTeste);
 
 repositorioCaixa.Cadastrar(caixaTeste);
 repositorioRevista.Cadastrar(revistaTeste);
 repositorioAmigos.Cadastrar(amigoTeste);
+repositorioEmprestimo.Cadastrar(emprestimoTeste);
 
 TelaCaixa telaCaixa = new TelaCaixa("Caixa", repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista("Revista", repositorioRevista, repositorioCaixa);

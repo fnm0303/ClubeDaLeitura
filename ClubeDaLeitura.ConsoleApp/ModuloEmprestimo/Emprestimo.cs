@@ -23,7 +23,7 @@ public class Emprestimo : EntidadeBase
     public Emprestimo(Amigos amigo, Revista revista)
     {
         Id = GeradorDeIds.ObterIdEmprestimo();
-
+        DataAbertura = DateTime.Now;
         Amigo = amigo;
         Revista = revista;
     }
