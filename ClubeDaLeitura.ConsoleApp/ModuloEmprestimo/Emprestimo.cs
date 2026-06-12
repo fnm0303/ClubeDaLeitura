@@ -10,13 +10,13 @@ public class Emprestimo : EntidadeBase
     public Amigos Amigo { get; private set; }
     public Revista Revista { get; private set; }
     public DateTime DataAbertura { get; private set; }
-    public DateTime DataDevolucaoPrevista
+    public DateTime DataConclusaoPrevista
     {
         get //get SEMPRE precisa RETORNAR algo
         {
             int diasDeEmprestimo = Revista.Caixa.DiasDeEmprestimo;
-            DateTime dataDevolucaoPrevista = DataAbertura.AddDays(diasDeEmprestimo); //adicionando nro de dias na data de abertura
-            return dataDevolucaoPrevista;
+            DateTime dataConclusaoPrevista = DataAbertura.AddDays(diasDeEmprestimo); //adicionando nro de dias na data de abertura
+            return dataConclusaoPrevista;
         }
     }
 

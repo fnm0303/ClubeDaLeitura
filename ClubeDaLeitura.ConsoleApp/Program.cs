@@ -23,6 +23,8 @@ repositorioEmprestimo.Cadastrar(emprestimoTeste);
 TelaCaixa telaCaixa = new TelaCaixa("Caixa", repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista("Revista", repositorioRevista, repositorioCaixa);
 TelaAmigos telaAmigos = new TelaAmigos("Amigo", repositorioAmigos);
+TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo);
+
 MenuPrincipal menuPrincipal = new MenuPrincipal();
 
 while (true)
@@ -96,7 +98,18 @@ while (true)
 
         else if (opcaoMenuPrincipal == "4") //empréstimos
         {
+            string? opcaoMenuInterno = telaEmprestimo.ObterOpcaoMenu();
+            if (opcaoMenuInterno == "S")
+                break;
 
+            if (opcaoMenuInterno == "1")
+                telaEmprestimo.Abrir();
+
+            else if (opcaoMenuInterno == "2")
+                telaEmprestimo.Concluir();
+
+            else if (opcaoMenuInterno == "3")
+                telaEmprestimo.VisualizarTodos(true);
         }
     }
 }
