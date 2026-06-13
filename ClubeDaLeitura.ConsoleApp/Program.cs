@@ -23,7 +23,7 @@ repositorioEmprestimo.Cadastrar(emprestimoTeste);
 TelaCaixa telaCaixa = new TelaCaixa("Caixa", repositorioCaixa, repositorioRevista);
 TelaRevista telaRevista = new TelaRevista("Revista", repositorioRevista, repositorioCaixa);
 TelaAmigos telaAmigos = new TelaAmigos("Amigo", repositorioAmigos);
-TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo);
+TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, repositorioRevista, repositorioAmigos);
 
 MenuPrincipal menuPrincipal = new MenuPrincipal();
 
