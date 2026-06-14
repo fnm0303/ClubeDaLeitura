@@ -64,7 +64,27 @@ public class TelaEmprestimo //Não será uma tela base
     }
     public void Concluir()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Conclusão de Empréstimo");
+        Console.WriteLine("------------------------");
+
+        VisualizarTodos(false);
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite o ID do empréstimo que deseja concluir: ");
+        int idEmprestimo = Convert.ToInt32(Console.ReadLine());
+
+        Emprestimo? emprestimo = (Emprestimo?)repositorioEmprestimo.SelecionarPorId(idEmprestimo);
+
+        emprestimo.Status = StatusEmprestimo.Concluido;
+
+        repositorioEmprestimo.Editar(idEmprestimo, emprestimo);
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"O empréstimo \"{emprestimo.Id}\" foi concluído com sucesso.");
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
     public void VisualizarTodos(bool deveExibirCabecalho)
     {
