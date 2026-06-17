@@ -7,6 +7,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 public enum StatusEmprestimo //ENUM é um tipo 
 {
+    Indefinido,
     Aberto,
     Concluido,
     Atrasado //constantes que definem que tipo de valores esse tipo pode ser
@@ -28,13 +29,33 @@ public class Emprestimo : EntidadeBase
         }
     }
 
+    public bool EstaAberto
+    {
+        get
+        {
+            return Status == StatusEmprestimo.Aberto;
+        }
+    }
+
     public Emprestimo(Amigos amigo, Revista revista)
     {
         Id = GeradorDeIds.ObterIdEmprestimo();
         DataAbertura = DateTime.Now;
-        Status = StatusEmprestimo.Aberto;
+        Status = StatusEmprestimo.Indefinido;
         Amigo = amigo;
         Revista = revista;
+    }
+
+    public void Abrir()
+    {
+        Status = StatusEmprestimo.Aberto;
+        Revista.Emprestar();
+    }
+
+    public void Concluir()
+    {
+        Status = StatusEmprestimo.Concluido;
+        Revista.Devolver();
     }
 
     public override void Atualizar(EntidadeBase entidadeAtualizada)
