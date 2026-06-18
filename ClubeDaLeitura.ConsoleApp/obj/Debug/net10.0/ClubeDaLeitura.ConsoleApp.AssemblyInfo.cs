@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClubeDaLeitura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3551d282e5502182487b6f391fc90b04f663518a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a36817f3c69ed38a1a2714f1f509dbf822d84575")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClubeDaLeitura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClubeDaLeitura.ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,16 +1,71 @@
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 
 public class TelaAmigos : TelaBase
 {
     private readonly RepositorioAmigos repositorioAmigos;
+    private readonly RepositorioEmprestimo repositorioEmprestimo;
 
-    public TelaAmigos(string nomeEntidade, RepositorioAmigos repositorioAmigos) : base(nomeEntidade, repositorioAmigos)
+    public TelaAmigos(string nomeEntidade, RepositorioAmigos repositorioAmigos, RepositorioEmprestimo repositorioEmprestimo) : base(nomeEntidade, repositorioAmigos)
     {
         this.repositorioAmigos = repositorioAmigos;
+        this.repositorioEmprestimo = repositorioEmprestimo;
     }
 
+    public void VisualizarEmprestimoAmigo()
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Visualização de Empréstimo de Amigo");
+        Console.WriteLine("------------------------");
+
+        VisualizarTodos(false);
+
+        Console.WriteLine("------------------------");
+        Console.Write("Digite o ID do amigo que deseja ver os empréstimos: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("------------------------");
+
+        Amigos? amigoSelecionado = (Amigos?)repositorioAmigos.SelecionarPorId(idSelecionado);
+
+        if (amigoSelecionado == null)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine($"O amigo \"{idSelecionado}\" não foi encontrado.");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+            return;
+        }
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"Empréstimos de \"{amigoSelecionado.Nome}\"");
+        Console.WriteLine("------------------------");
+
+        Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -13} | {4, -15}",
+                            "Id", "Revista", "Abertura", "Conclusão Prev.", "Status");
+
+        EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarTodos();
+
+        for (int i = 0; i < emprestimos.Length; i++)
+        {
+            Emprestimo e = (Emprestimo)emprestimos[i];
+
+            if (e == null)
+                continue;
+
+            if (e.Amigo.Id != amigoSelecionado.Id)
+                continue;
+
+            Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -13} | {4, -15}",
+                    e.Id, e.Revista.Titulo,
+                    e.DataAbertura.ToShortDateString(),
+                    e.DataConclusaoPrevista.ToShortDateString(),
+                    e.Status.ToString());
+        }
+    }
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
