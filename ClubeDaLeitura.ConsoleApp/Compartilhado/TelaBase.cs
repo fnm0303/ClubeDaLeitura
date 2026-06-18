@@ -10,7 +10,7 @@ public abstract class TelaBase
         this.nomeEntidade = nomeEntidade;
         this.repositorio = repositorio;
     }
-    public string? ObterOpcaoMenu()
+    public virtual string? ObterOpcaoMenu() //virtual = vai manter uma implementação base e permite que outras classes implementem esse método (override)
     {
         Console.WriteLine("------------------------");
         Console.WriteLine($"Gestão de {nomeEntidade}s");

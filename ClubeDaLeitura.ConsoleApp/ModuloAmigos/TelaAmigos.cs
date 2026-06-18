@@ -14,6 +14,24 @@ public class TelaAmigos : TelaBase
         this.repositorioEmprestimo = repositorioEmprestimo;
     }
 
+    public override string? ObterOpcaoMenu() //override = sobrescrevendo / substituindo
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"Gestão de Amigos");
+        Console.WriteLine("------------------------");
+        Console.WriteLine($"1 - Cadastrar Amigo");
+        Console.WriteLine($"2 - Editar Amigo");
+        Console.WriteLine($"3 - Excluir Amigo");
+        Console.WriteLine($"4 - Visualizar Amigos");
+        Console.WriteLine($"5 - Visualizar Empréstimos de um Amigo");
+        Console.WriteLine("S - Sair");
+        Console.WriteLine("------------------------");
+        Console.Write("> ");
+        string? opcaoMenuInterno = Console.ReadLine()?.ToUpper();
+
+        return opcaoMenuInterno;
+    }
+
     public void VisualizarEmprestimoAmigo()
     {
         Console.WriteLine("------------------------");
@@ -44,7 +62,7 @@ public class TelaAmigos : TelaBase
         Console.WriteLine($"Empréstimos de \"{amigoSelecionado.Nome}\"");
         Console.WriteLine("------------------------");
 
-        Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -13} | {4, -15}",
+        Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -15} | {4, -15}",
                             "Id", "Revista", "Abertura", "Conclusão Prev.", "Status");
 
         EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarTodos();
@@ -59,12 +77,16 @@ public class TelaAmigos : TelaBase
             if (e.Amigo.Id != amigoSelecionado.Id)
                 continue;
 
-            Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -13} | {4, -15}",
+            Console.WriteLine("{0, -7} | {1, -15} | {2, -15} | {3, -15} | {4, -15}",
                     e.Id, e.Revista.Titulo,
                     e.DataAbertura.ToShortDateString(),
                     e.DataConclusaoPrevista.ToShortDateString(),
                     e.Status.ToString());
         }
+
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {

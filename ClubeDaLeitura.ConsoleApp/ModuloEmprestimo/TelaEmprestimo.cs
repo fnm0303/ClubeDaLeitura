@@ -47,6 +47,7 @@ public class TelaEmprestimo //Não será uma tela base
         Console.WriteLine("------------------------");
 
         VisualizarAmigos();
+
         Console.WriteLine("------------------------");
         Console.WriteLine("Digite o ID do amigo que irá receber a revista: ");
         int idAmigo = Convert.ToInt32(Console.ReadLine());
@@ -64,6 +65,16 @@ public class TelaEmprestimo //Não será uma tela base
             return;
         }
 
+        if (!revistaSelecionada.EstaDisponivel)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine($"A revista \"{revistaSelecionada.Titulo}\" está indisponível.");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+            return;
+        }
+
         if (amigoSelecionado == null)
         {
             Console.WriteLine("------------------------");
@@ -74,14 +85,24 @@ public class TelaEmprestimo //Não será uma tela base
             return;
         }
 
-        if (!revistaSelecionada.EstaDisponivel)
+        EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarTodos();
+
+        for (int i = 0; i < emprestimos.Length; i++)
         {
-            Console.WriteLine("------------------------");
-            Console.WriteLine($"A revista \"{revistaSelecionada.Titulo}\" está indisponível.");
-            Console.WriteLine("------------------------");
-            Console.WriteLine("Digite ENTER para continuar...");
-            Console.ReadLine();
-            return;
+            Emprestimo e = (Emprestimo)emprestimos[i];
+
+            if (e == null)
+                continue;
+
+            if (e.Amigo.Id == amigoSelecionado.Id && e.EstaAberto)
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine($"O amigo \"{amigoSelecionado.Nome}\" já tem um empréstimo em aberto.");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Digite ENTER para continuar...");
+                Console.ReadLine();
+                return;
+            }
         }
 
         Emprestimo novoEmprestimo = new Emprestimo(amigoSelecionado, revistaSelecionada);

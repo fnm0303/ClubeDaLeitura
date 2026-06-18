@@ -14,6 +14,7 @@ Caixa caixaTeste = new Caixa("Gibis", "Azul", 3);
 Revista revistaTeste = new Revista("Cebolinha", 4, 1984, caixaTeste);
 Amigos amigoTeste = new Amigos("Marília", "Cremilda", 4799141593);
 Emprestimo emprestimoTeste = new Emprestimo(amigoTeste, revistaTeste);
+emprestimoTeste.Abrir();
 
 repositorioCaixa.Cadastrar(caixaTeste);
 repositorioRevista.Cadastrar(revistaTeste);
