@@ -3,7 +3,7 @@ using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 
-public class TelaAmigos : TelaBase
+public class TelaAmigos : TelaBase, ITelaOpcoes
 {
     private readonly RepositorioAmigos repositorioAmigos;
     private readonly RepositorioEmprestimo repositorioEmprestimo;

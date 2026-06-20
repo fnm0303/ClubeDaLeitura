@@ -4,7 +4,7 @@ using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
-public class TelaEmprestimo //Não será uma tela base
+public class TelaEmprestimo : ITelaOpcoes //Não será uma tela base
 {
     private readonly RepositorioEmprestimo repositorioEmprestimo; //apenas no construtor pegará o valor
     private readonly RepositorioRevista repositorioRevista;
